@@ -21,6 +21,7 @@ from tqdm import tqdm, tqdm_notebook
 from torch.autograd import Variable
 from torchsummary import summary
 #pip 문제 발생
+#하 ㅅㅂ
 
 
 with st.sidebar:
@@ -36,7 +37,7 @@ with st.sidebar:
     )
 
 if choice == "메인페이지":
-
+    st.write("환영합니다!")
     tab0, tab1, tab2, tab3 = st.tabs(["🏠 Main", "🔎Explain", "🗃 Data", "🖇️ Link"])
    
 
