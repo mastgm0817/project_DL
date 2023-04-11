@@ -40,11 +40,11 @@ if choice == "메인페이지":
 
         ### Team 💪
 
-        | 이름 | 역할 분담 | 그 외 역할 | GitHub |
-        | :---: | :---: | :---: | :---: |
-        | 고병연 | 딥러닝 |  | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/whataLIN)|
-        | 박상원 | 딥러닝 |  | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]|
-        | 이규린 | streamlit 제작 |  | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]|
+        | 이름 | 역할 분담 | GitHub |
+        | :---: | :---: | :---: |
+        | 고병연 | efficientNet, CNN | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/whataLIN)|
+        | 박상원 | 시각화 |  [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]|
+        | 이규린 | ResNet, streamlit 구현 |  [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)]|
     
         ---
         
