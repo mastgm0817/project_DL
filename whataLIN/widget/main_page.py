@@ -98,7 +98,7 @@ def explain_tab():
     values = [424, 238, 242, 667, 292, 829, 166, 354, 195, 342, 162, 201, 431]
     pie_chart(labels, values, title_text='Movie genre')
 
-def pie_chart(lables, values, title_text=""):
+def pie_chart(labels, values, title_text=""):
     '''원형 plotly 차트'''
     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
     fig.update_layout(title_text=title_text)
