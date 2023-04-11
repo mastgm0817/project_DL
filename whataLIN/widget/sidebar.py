@@ -1,12 +1,19 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+from enum import Enum
+
+class OptionMenu(Enum):
+    MAIN = "메인페이지"
 
 def sidebar():
-    ### 사이드바
+    '''Option Menu를 통한 Sidebar 구현'''
+    # https://github.com/victoryhb/streamlit-option-menu
+    # -> 위 저장소를 통해 Option Menu Custom
+
     # 사이드바 메뉴
     args = [
         "Contents",
-        ["메인페이지", "데이터페이지", "장르 예측"] 
+        [OptionMenu.MAIN, "데이터페이지", "장르 예측"] 
     ]
     # CSS 꾸미기
     styles = {
