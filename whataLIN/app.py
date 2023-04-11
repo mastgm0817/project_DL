@@ -1,5 +1,5 @@
 import streamlit as st
-from widget import sidebar
+from widget.sidebar import sidebar
 
 with st.sidebar:
     sidebar()
