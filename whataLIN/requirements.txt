@@ -1,12 +1,10 @@
 streamlit
+streamlit_option_menu
 Pillow==6.1.0
 requests
 pandas
 numpy
 plotly
-matplotlib
-joblib
-streamlit_option_menu
 torch
 tqdm
 torchsummary
