@@ -4,4 +4,4 @@ from widget.sidebar import sidebar
 with st.sidebar:
     sidebar()
 
-st.write("나는 야만인이다")
+st.write(st.session_state["choice"])
