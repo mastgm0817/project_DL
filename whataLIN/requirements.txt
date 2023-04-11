@@ -1,5 +1,5 @@
 streamlit
-PIL
+Pillow==6.1.0
 requests
 pandas
 numpy
