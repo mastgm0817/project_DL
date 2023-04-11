@@ -1,4 +1,4 @@
 import streamlit as st
 
-def main_page():
+def build():
     st.write("메인페이지")

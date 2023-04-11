@@ -5,7 +5,7 @@ from enum import Enum
 class OptionMenu(Enum):
     MAIN = "메인페이지"
 
-def sidebar():
+def build():
     '''Option Menu를 통한 Sidebar 구현'''
     # https://github.com/victoryhb/streamlit-option-menu
     # -> 위 저장소를 통해 Option Menu Custom

@@ -1,10 +1,10 @@
 import streamlit as st
-from widget import sidebar
+from widget import sidebar, main_page
 
 with st.sidebar:
-    sidebar.sidebar()
+    sidebar.build()
 
 choice = st.session_state["choice"]
 
 if choice == sidebar.OptionMenu.MAIN.value:
-    widget.main_page.main_page()
+    main_page.build()
