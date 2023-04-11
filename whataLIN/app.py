@@ -20,7 +20,7 @@ import os
 from tqdm import tqdm, tqdm_notebook
 from torch.autograd import Variable
 from torchsummary import summary
-
+#pip 문제 발생
 
 
 with st.sidebar:
@@ -74,16 +74,16 @@ if choice == "메인페이지":
         
         '''
         ### 자료 설명
-        > * id
-        > *	poster	
-        > * title	
-        > * year	
-        > * rating	
-        > * genre	
-        > * genre 란에 등장하는 
+        > * id : 영화 포스터에 부여된 ID
+        > *	poster : 포스터 링크
+        > * title : 영화 이름
+        > * year : 개봉 연도
+        > * rating : 별점
+        > * genre : 영화의 장르. string 형태로 하나 이상의 장르가 묶인 형태
+        > * 그 외 장르 이름을 열 이름으로 가지는 열은 영화의 장르를 One-Hot Encoding 방식으로 나타낸 것.
 
-        > * 
         '''
+
 
         labels = ['action', 'adventure', 'animmation', 'comedy', 'crime', 'drama', 'fantasy', 'horror', 'mystery', 'romance', 'sci-fi', 'short', 'thriler']
         values = [424, 238, 242, 667, 292, 829, 166, 354, 195, 342, 162, 201, 431]
