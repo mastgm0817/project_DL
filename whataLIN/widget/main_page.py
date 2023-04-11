@@ -19,21 +19,19 @@ def build():
     with tab0: intro_tab() # 팀 소개
     with tab1: explain_tab() # 데이터 설명
     with tab2: data_tab() # 
+    with tab3:
+        tab3.subheader("🖇️ Link Tab")
+        tab3.write("추가적인 자료는 아래의 링크에서 확인 하시면 됩니다.")
+        st.write()
+        '''
 
-
-    # with tab3:
-    #     tab3.subheader("🖇️ Link Tab")
-    #     tab3.write("추가적인 자료는 아래의 링크에서 확인 하시면 됩니다.")
-    #     st.write()
-    #     '''
-
-    #     | 구분 | 이름  | 링크 | 
-    #     | :---: | :---: | :---: | 
-    #     | Kaggle | movie poster | [![Colab](https://img.shields.io/badge/kaggle-College%20Basketball%20Dataset-skyblue)][https://www.kaggle.com/datasets/raman77768/movie-classifier/code] | 
-    #     | Notion | 딥러닝 프로젝트 | [![Notion](https://img.shields.io/badge/Notion-Sports%20TooToo-lightgrey)][https://www.notion.so/925e2766791248a58cd3bf7623fbb90a] | 
-    #     | Colab | 🤖전처리 데이터 | [![Colab](https://img.shields.io/badge/colab-Data%20preprocessing-yellow)] | 
+        | 구분 | 이름  | 링크 | 
+        | :---: | :---: | :---: | 
+        | Kaggle | movie poster | [![Colab](https://img.shields.io/badge/kaggle-College%20Basketball%20Dataset-skyblue)][https://www.kaggle.com/datasets/raman77768/movie-classifier/code] | 
+        | Notion | 딥러닝 프로젝트 | [![Notion](https://img.shields.io/badge/Notion-Sports%20TooToo-lightgrey)][https://www.notion.so/925e2766791248a58cd3bf7623fbb90a] | 
+        | Colab | 🤖전처리 데이터 | [![Colab](https://img.shields.io/badge/colab-Data%20preprocessing-yellow)] | 
         
-    #     '''
+        '''
 
 def intro_tab():
     '''팀원 소개 및 역할 분담'''
