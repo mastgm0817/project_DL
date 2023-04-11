@@ -6,10 +6,7 @@ numpy
 plotly
 matplotlib
 joblib
-xgboost
-seaborn
 streamlit_option_menu
-pickle
 torch
 time
 os
