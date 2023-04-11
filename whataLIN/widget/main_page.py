@@ -72,12 +72,14 @@ def explain_tab():
     st.subheader("🔎Explain")
     url = "https://github.com/whataLIN/project_DL/raw/main/whataLIN/df.csv" 
 
+    # 표 데이터 로딩
     try:
         df = pd.read_csv(url)
     except pd.errors.EmptyDataError:
         st.error("CSV 파일을 찾을 수 없습니다.")
         st.stop()
 
+    # 자료 설명 마크다운
     st.subheader("자료 설명")
     st.write(
         '''
@@ -91,9 +93,13 @@ def explain_tab():
         '''
     )
 
+    # 파이 차트 표시
     labels = ['action', 'adventure', 'animmation', 'comedy', 'crime', 'drama', 'fantasy', 'horror', 'mystery', 'romance', 'sci-fi', 'short', 'thriler']
     values = [424, 238, 242, 667, 292, 829, 166, 354, 195, 342, 162, 201, 431]
+    pie_chart(labels, values, title_text='Movie genre')
 
+def pie_chart(lables, values, title_text=""):
+    '''원형 plotly 차트'''
     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
-    fig.update_layout(title_text='Movie genre')
-    fig.show()
+    fig.update_layout(title_text=title_text)
+    st.plotly_chart(fig)
