@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 
-@st.cache_data
 def get_table():
     df_url = "https://github.com/whataLIN/project_DL/raw/main/whataLIN/df.csv" 
     return pd.read_csv(df_url)
