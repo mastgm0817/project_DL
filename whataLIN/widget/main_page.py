@@ -2,6 +2,11 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 
+@st.cache_data
+def get_table():
+    df_url = "https://github.com/whataLIN/project_DL/raw/main/whataLIN/df.csv" 
+    return pd.read_csv(df_url)
+
 def build():
     '''메인페이지 하부 탭 정의 및 구현'''
 
@@ -13,26 +18,8 @@ def build():
    
     with tab0: intro_tab() # 팀 소개
     with tab1: explain_tab() # 데이터 설명
-    # with tab2:
-    #     tab2.subheader("🗃 Data Tab")
-    #     st.write("다음은 CSV 데이터의 일부입니다.")
-    #     # GitHub URL
-    #     url = "https://github.com/whataLIN/project_DL/raw/main/whataLIN/df.csv" 
+    with tab2: data_tab() # 
 
-    #     # CSV 파일 읽기
-    #     try:
-    #         df = pd.read_csv(url)
-    #     except pd.errors.EmptyDataError:
-    #         st.error("CSV 파일을 찾을 수 없습니다.")
-    #         st.stop()
-    #     # DataFrame 출력
-    #     st.write(df)
-    #     tab2.write()
-    #     '''
-    #     ###### 각 Columns의 설명입니다.
-    #     > * 
-
-    #     '''
 
     # with tab3:
     #     tab3.subheader("🖇️ Link Tab")
@@ -70,11 +57,10 @@ def intro_tab():
 
 def explain_tab():
     st.subheader("🔎Explain")
-    url = "https://github.com/whataLIN/project_DL/raw/main/whataLIN/df.csv" 
 
     # 표 데이터 로딩
     try:
-        df = pd.read_csv(url)
+        df = get_table()
     except pd.errors.EmptyDataError:
         st.error("CSV 파일을 찾을 수 없습니다.")
         st.stop()
@@ -103,3 +89,24 @@ def pie_chart(labels, values, title_text=""):
     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
     fig.update_layout(title_text=title_text)
     st.plotly_chart(fig)
+
+def data_tab():
+    '''데이터 탭 구현'''
+
+    st.subheader("🗃 Data Tab")
+    st.write("다음은 CSV 데이터의 일부입니다.")
+    # GitHub URL
+    # CSV 파일 읽기
+    try:
+        df = get_table()
+    except pd.errors.EmptyDataError:
+        st.error("CSV 파일을 찾을 수 없습니다.")
+        st.stop()
+    # DataFrame 출력
+    st.table(df)
+    st.dataframe(df)
+    st.subheader('각 Columns의 설명입니다.')
+    st.write(
+        '''
+        > * 
+        ''')
