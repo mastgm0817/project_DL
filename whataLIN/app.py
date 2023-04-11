@@ -7,11 +7,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import matplotlib.pyplot as plt
-import joblib
-import xgboost as xgb
-import seaborn as sns
 from streamlit_option_menu import option_menu
-import pickle as pkl
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -20,8 +16,6 @@ import os
 from tqdm import tqdm, tqdm_notebook
 from torch.autograd import Variable
 from torchsummary import summary
-#pip 문제 발생
-#하 ㅅㅂ
 
 
 with st.sidebar:
