@@ -1,8 +1,7 @@
+pandas
 streamlit
 streamlit_option_menu
-Pillow==6.1.0
 requests
-pandas
 numpy
 plotly
 torch
