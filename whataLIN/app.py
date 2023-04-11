@@ -6,5 +6,5 @@ with st.sidebar:
 
 choice = st.session_state["choice"]
 
-if choice == sidebar.OptionMenu.MAIN:
+if choice == sidebar.OptionMenu.MAIN.value:
     widget.main_page.main_page()
