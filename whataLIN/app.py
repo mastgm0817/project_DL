@@ -74,7 +74,14 @@ if choice == "메인페이지":
         
         '''
         ### 자료 설명
-        > * 
+        > * id
+        > *	poster	
+        > * title	
+        > * year	
+        > * rating	
+        > * genre	
+        > * genre 란에 등장하는 
+
         > * 
         '''
 
