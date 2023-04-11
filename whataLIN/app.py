@@ -37,7 +37,7 @@ with st.sidebar:
     )
 
 if choice == "메인페이지":
-    st.write("환영합니다!")
+
     tab0, tab1, tab2, tab3 = st.tabs(["🏠 Main", "🔎Explain", "🗃 Data", "🖇️ Link"])
    
 
