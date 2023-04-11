@@ -8,8 +8,8 @@ matplotlib
 joblib
 streamlit_option_menu
 torch
-time
 os
 tqdm
 torch.autograd
 torchsummary
+scikit-learn==0.24.2
