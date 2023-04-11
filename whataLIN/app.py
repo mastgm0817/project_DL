@@ -11,6 +11,16 @@ import joblib
 import xgboost as xgb
 import seaborn as sns
 from streamlit_option_menu import option_menu
+import pickle as pkl
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import time
+import os
+from tqdm import tqdm, tqdm_notebook
+from torch.autograd import Variable
+from torchsummary import summary
+
 
 
 with st.sidebar:
@@ -62,7 +72,7 @@ if choice == "메인페이지":
         tab2.subheader("🗃 Data Tab")
         st.write("다음은 CSV 데이터의 일부입니다.")
         # GitHub URL
-        url = "" #링크 추가
+        url = "https://github.com/whataLIN/project_DL/raw/main/whataLIN/df.csv" 
 
         # CSV 파일 읽기
         try:
@@ -99,7 +109,7 @@ elif choice == "데이터페이지":
     with tab0:
         tab0.subheader("🗃 Data Tab")
         st.write("사용된 전체 csv파일")
-        url = ""        #링크 추가
+        url = "https://github.com/whataLIN/project_DL/raw/main/whataaLIN/df.csv"        
         df = pd.read_csv(url)
         st.write(df)
 
