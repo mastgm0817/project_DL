@@ -61,13 +61,32 @@ if choice == "메인페이지":
         '''
     with tab1:
         tab1.subheader("🔎Explain")
+
+        url = "https://github.com/whataLIN/project_DL/raw/main/whataLIN/df.csv" 
+
+        try:
+            df = pd.read_csv(url)
+        except pd.errors.EmptyDataError:
+            st.error("CSV 파일을 찾을 수 없습니다.")
+            st.stop()
+
         tab1.write()
+        
         '''
         ### 자료 설명
         > * 
         > * 
-
         '''
+
+        labels = ['action', 'adventure', 'animmation', 'comedy', 'crime', 'drama', 'fantasy', 'horror', 'mystery', 'romance', 'sci-fi', 'short', 'thriler']
+        values = [424, 238, 242, 667, 292, 829, 166, 354, 195, 342, 162, 201, 431]
+
+        fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
+
+        fig.update_layout(title_text='Movie genre')
+        fig.show()
+
+
     with tab2:
         tab2.subheader("🗃 Data Tab")
         st.write("다음은 CSV 데이터의 일부입니다.")
@@ -85,7 +104,7 @@ if choice == "메인페이지":
         tab2.write()
         '''
         ###### 각 Columns의 설명입니다.
-        > * ㅁㄴㅇㄹ
+        > * 
 
         '''
 
@@ -97,8 +116,8 @@ if choice == "메인페이지":
 
         | 구분 | 이름  | 링크 | 
         | :---: | :---: | :---: | 
-        | Kaggle | | [![Colab](https://img.shields.io/badge/kaggle-College%20Basketball%20Dataset-skyblue)][https://www.kaggle.com/datasets/raman77768/movie-classifier/code] | 
-        | Notion |  | [![Notion](https://img.shields.io/badge/Notion-Sports%20TooToo-lightgrey)][https://www.notion.so/925e2766791248a58cd3bf7623fbb90a] | 
+        | Kaggle | movie poster | [![Colab](https://img.shields.io/badge/kaggle-College%20Basketball%20Dataset-skyblue)][https://www.kaggle.com/datasets/raman77768/movie-classifier/code] | 
+        | Notion | 딥러닝 프로젝트 | [![Notion](https://img.shields.io/badge/Notion-Sports%20TooToo-lightgrey)][https://www.notion.so/925e2766791248a58cd3bf7623fbb90a] | 
         | Colab | 🤖전처리 데이터 | [![Colab](https://img.shields.io/badge/colab-Data%20preprocessing-yellow)] | 
         
         '''
@@ -109,7 +128,7 @@ elif choice == "데이터페이지":
     with tab0:
         tab0.subheader("🗃 Data Tab")
         st.write("사용된 전체 csv파일")
-        url = "https://github.com/whataLIN/project_DL/raw/main/whataaLIN/df.csv"        
+        url = "https://github.com/whataLIN/project_DL/raw/main/whataLIN/df.csv"        
         df = pd.read_csv(url)
         st.write(df)
 
