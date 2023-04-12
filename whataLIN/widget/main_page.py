@@ -167,10 +167,10 @@ def search_data(option, df):
 
     elif option == "column, row로 검색":
         try:
-            columns=(input("검색할 column을 입력하세요.")).replace(" ","").split(",")
+            columns=(st.text_input("검색할 column을 입력하세요.")).replace(" ","").split(",")
             # print(columns)
             # columns = columns.split(",")
-            index_name = input('검색할 index를 입력해 주세요').replace(" ","")
+            index_name = st.text_input('검색할 index를 입력해 주세요').replace(" ","")
             index_name = list(map(int, index_name.split(",")))
             show_df=df.loc[index_name, columns]
             # print(index_name)
