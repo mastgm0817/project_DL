@@ -104,12 +104,13 @@ def explain_tab():
 
     elif op_chart=="장르 클러스터 산점도": 
         # 산점도 표시
-        fig = get_chart('whataLIN/scatterplot.pickle')
-        st.plotly_chart(fig)
+        fig_scat = get_chart('whataLIN/scatterplot.pickle')
+        st.plotly_chart(fig_scat)
     
     elif op_chart=="클러스터링 결과":
-        fig = get_chart('whataLIN/cluster_piechart.pickle')
-        st.plotly_chart(fig)
+        
+        fig_pie = get_chart('whataLIN/cluster_piechart.pickle')
+        st.plotly_chart(fig_pie)
 
 
 
