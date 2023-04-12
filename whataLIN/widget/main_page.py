@@ -12,12 +12,11 @@ def get_table():
     return df
 
 @st.cache_data
-def get_chart(root):
+def draw_chart(root):
     
     with open(root, 'rb') as file:
         fig = pickle.load(file)
-
-    return fig
+    st.plotly_chart(fig)
     
 
 def build():
@@ -104,15 +103,15 @@ def explain_tab():
 
     # 산점도 표시
     elif op_chart=="장르 클러스터 산점도": 
-        
-        fig_scat = get_chart('whataLIN/scatterplot.pickle')
-        st.plotly_chart(fig_scat)
+        draw_chart('whataLIN/scatterplot.pickle')
+        # fig_scat = get_chart('whataLIN/scatterplot.pickle')
+        # st.plotly_chart(fig_scat)
         
     #파이차트표시
     elif op_chart=="클러스터링 결과":
-        
-        fig_pie = get_chart('whataLIN/clus_pie_1.pickle')
-        st.plotly_chart(fig_pie)
+        draw_chart('whataLIN/clus_pie_1.pickle')
+        # fig_pie = get_chart('whataLIN/clus_pie_1.pickle')
+        # st.plotly_chart(fig_pie)
 
 
 def pie_chart(labels, values, title_text=""):
