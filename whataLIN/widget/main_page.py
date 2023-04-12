@@ -102,11 +102,13 @@ def explain_tab():
         values = [424, 238, 242, 667, 292, 829, 166, 354, 195, 342, 162, 201, 431]
         pie_chart(labels, values, title_text='Movie genre')
 
+    # 산점도 표시
     elif op_chart=="장르 클러스터 산점도": 
-        # 산점도 표시
+        
         fig_scat = get_chart('whataLIN/scatterplot.pickle')
         st.plotly_chart(fig_scat)
-    
+        
+    #파이차트표시
     elif op_chart=="클러스터링 결과":
         
         fig_pie = get_chart('whataLIN/cluster_piechart.pickle')
