@@ -127,7 +127,7 @@ def data_tab():
 
     option = ["column으로 검색", "row으로 검색", "column, row으로 검색"]
     way_to_select = st.selectbox("검색 방법 선택", options=option)
-    search_data(option)
+    search_data(option, df)
 
 
 def link_tab():
@@ -144,8 +144,9 @@ def link_tab():
     ''')
 
 
-def search_data(option):
-    if way_to_select == "column으로 검색":
+def search_data(option, df):
+
+    if option == "column으로 검색":
         try:
             columns=(st.text_input("검색할 column을 입력하세요.")).replace(" ","")
             if ',' in columns:
@@ -155,7 +156,7 @@ def search_data(option):
         except:
             st.write("검색된 값이 없습니다.")
         
-    elif way_to_select == "row으로 검색":
+    elif option == "row으로 검색":
         try:
             index_name = st.text_input('검색할 index를 입력해 주세요').replace(" ","")
             index_name = list(map(int, index_name.split(",")))
@@ -164,7 +165,7 @@ def search_data(option):
         except:
             st.write("검색된 값이 없습니다.")
 
-    elif way_to_select == "column, row으로 검색":
+    elif option == "column, row으로 검색":
         try:
             columns=(st.text_input("검색할 column을 입력하세요.")).replace(" ","")
             if ',' in columns:
