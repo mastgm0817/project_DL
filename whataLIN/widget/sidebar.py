@@ -28,7 +28,7 @@ def build():
     }
     # 키워드 옵션
     kwargs = {
-        "icons": ['house', 'kanban', 'bi bi-robot'],
+        "icons": ['house', 'bi bi-robot'],
         "menu_icon": "app-indicator",
         "default_index": 0,
         "styles": styles,
