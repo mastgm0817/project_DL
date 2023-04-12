@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import pickle
+import requests
 
 def get_table():
     url = 'https://github.com/whataLIN/project_DL/raw/main/whataLIN/poster_data.pickle'
