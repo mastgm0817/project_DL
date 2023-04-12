@@ -10,6 +10,13 @@ def get_table():
     with open('whataLIN/poster_data.pickle', 'rb') as file:
         df = pickle.load(file)
     return df
+
+def get_chart(root):
+    
+    with open(root, 'rb') as file:
+        fig = pickle.load(file)
+
+    return fig
     
 
 def build():
@@ -81,6 +88,9 @@ def explain_tab():
         pie_chart(labels, values, title_text='Movie genre')
 
     # 산점도 표시
+    fig = get_chart('whataLIN/scatterplot.pickle')
+    st.plotly_chart(fig)
+
     # names = ['Trace A', 'Trace B', 'Trace C', 'Trace D', 'Trace E', 'Trace F', 'Trace G', 'Trace H', 'Trace I']
     # colors = ['red', 'blue', 'green', 'orange', 'purple', 'brown', 'pink', 'gray', 'olive', 'cyan']
     # st.write("산점도")
@@ -142,7 +152,7 @@ def data_tab():
             index_name = st.text_input('검색하고 싶은 index를 입력해 주세요')
             if ',' in columns:
                 columns = columns.split(",")
-            show_df = df.iloc[index_name]
+            show_df = df.iloc[[index_name]]
             st.write(show_df)
         except:
             st.write("비정상적인 행 값입니다.")
