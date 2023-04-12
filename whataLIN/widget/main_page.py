@@ -4,10 +4,19 @@ import plotly.graph_objects as go
 import pickle
 
 def get_table():
+    url = 'https://github.com/whataLIN/project_DL/raw/main/whataLIN/poster_data.pickle'
+    local_filename = 'poster_data.pickle'
+
+    # 파일 다운로드
+    response = requests.get(url)
+
+    # pickle 파일 열기
+    with open(local_filename, 'rb') as file:
+        df = pickle.load(file)
     # df_url = "https://github.com/whataLIN/project_DL/raw/main/whataLIN/df.csv" 
     # return pd.read_csv(df_url)
-    with open('https://github.com/whataLIN/project_DL/raw/main/whataLIN/poster_data.pickle', 'rb') as file:
-        df = pickle.load(file)
+    # with open('https://github.com/whataLIN/project_DL/raw/main/whataLIN/poster_data.pickle', 'rb') as file:
+    #     df = pickle.load(file)
     return df
     
 
