@@ -11,6 +11,7 @@ def get_table():
         df = pickle.load(file)
     return df
 
+@st.cache_data
 def get_chart(root):
     
     with open(root, 'rb') as file:
@@ -126,31 +127,7 @@ def data_tab():
 
     option = ["column으로 검색", "row으로 검색", "column, row으로 검색"]
     way_to_select = st.selectbox("검색 방법 선택", options=option)
-
-    if way_to_select == "column으로 검색":
-        try:
-            columns=(st.text_input("검색할 column을 입력하세요.")).replace(" ","")
-            if ',' in columns:
-                columns = columns.split(",")
-            show_df=df[columns]
-            st.write(show_df.iloc[:5])
-        except:
-            st.write("비정상적인 column 값입니다.")
-        
-    elif way_to_select == "row으로 검색":
-        try:
-            index_name = st.text_input('검색하고 싶은 index를 입력해 주세요')
-            index_name = list(map(int, index_name.split(",")))
-            show_df = df.iloc[index_name]
-            st.write(show_df)
-        except:
-            st.write("비정상적인 행 값입니다.")
-
-    elif way_to_select == "column, row으로 검색":
-        pass
-
-    else:
-        pass
+    search_data(option)
 
 
 def link_tab():
@@ -165,4 +142,46 @@ def link_tab():
     | Notion | 딥러닝 프로젝트 | [![Notion](https://img.shields.io/badge/Notion-Sports%20TooToo-lightgrey)][https://www.notion.so/925e2766791248a58cd3bf7623fbb90a] | 
     | Colab | 🤖전처리 데이터 | [![Colab](https://img.shields.io/badge/colab-Data%20preprocessing-yellow)] | 
     ''')
-    
+
+
+def search_data(option):
+    if way_to_select == "column으로 검색":
+        try:
+            columns=(st.text_input("검색할 column을 입력하세요.")).replace(" ","")
+            if ',' in columns:
+                columns = columns.split(",")
+            show_df=df[columns]
+            st.write(show_df.iloc[:5])
+        except:
+            st.write("검색된 값이 없습니다.")
+        
+    elif way_to_select == "row으로 검색":
+        try:
+            index_name = st.text_input('검색할 index를 입력해 주세요').replace(" ","")
+            index_name = list(map(int, index_name.split(",")))
+            show_df = df.iloc[index_name]
+            st.write(show_df)
+        except:
+            st.write("검색된 값이 없습니다.")
+
+    elif way_to_select == "column, row으로 검색":
+        try:
+            columns=(st.text_input("검색할 column을 입력하세요.")).replace(" ","")
+            if ',' in columns:
+                columns = columns.split(",")
+                if column_names in df.columns:
+                    c_index = st.text_input('검색할 Index를 입력하세요 ')
+
+                if c_index.isdigit():
+                    c_index = int(c_index)
+                    filtered_df = df[(df[column_names] == c_index)]
+                # 검색 결과 출력하기
+                    if not filtered_df.empty:
+                        st.write(filtered_df)
+                    else:
+                        st.write('검색된 Index가 없습니다.')
+                else:
+                    filtered_df = df[(df[column_names] == c_index)]
+                    st.write(filtered_df)
+        except:
+            st.write("비정상적인 column 값입니다.")
