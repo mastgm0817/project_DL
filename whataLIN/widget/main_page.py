@@ -123,9 +123,7 @@ def data_tab():
     st.table(df.iloc[:5])
 
     option = ("column으로 검색", "row으로 검색", "column, row으로 검색")
-    way_to_select = st.selectbox(
-            label='검색 방법 선택',
-            options=option)
+    way_to_select = st.selectbox('검색 방법 선택', option)
 
     if way_to_select=="column으로 검색":
         "row으로 검색"
