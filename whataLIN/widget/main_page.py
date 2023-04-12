@@ -76,6 +76,7 @@ def explain_tab():
     values = [424, 238, 242, 667, 292, 829, 166, 354, 195, 342, 162, 201, 431]
     pie_chart(labels, values, title_text='Movie genre')
 
+    # 산점도 표시
     names = ['Trace A', 'Trace B', 'Trace C', 'Trace D', 'Trace E', 'Trace F', 'Trace G', 'Trace H', 'Trace I']
     colors = ['red', 'blue', 'green', 'orange', 'purple', 'brown', 'pink', 'gray', 'olive', 'cyan']
     scatter_chart(names, colors, 'PCA Component 1','PCA Component 2')
