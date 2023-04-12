@@ -73,11 +73,12 @@ def explain_tab():
     )
 
     option=["장르 비율 파이 차트", "장르 클러스터 산점도"]
-    st.selectbox("데이터 정보", option)
+    op_chart=st.selectbox("데이터 정보", option)
+    if op_chart=="장르 비율 파이 차트":
     # 파이 차트 표시
-    labels = ['action', 'adventure', 'animmation', 'comedy', 'crime', 'drama', 'fantasy', 'horror', 'mystery', 'romance', 'sci-fi', 'short', 'thriler']
-    values = [424, 238, 242, 667, 292, 829, 166, 354, 195, 342, 162, 201, 431]
-    pie_chart(labels, values, title_text='Movie genre')
+        labels = ['action', 'adventure', 'animmation', 'comedy', 'crime', 'drama', 'fantasy', 'horror', 'mystery', 'romance', 'sci-fi', 'short', 'thriler']
+        values = [424, 238, 242, 667, 292, 829, 166, 354, 195, 342, 162, 201, 431]
+        pie_chart(labels, values, title_text='Movie genre')
 
     # 산점도 표시
     # names = ['Trace A', 'Trace B', 'Trace C', 'Trace D', 'Trace E', 'Trace F', 'Trace G', 'Trace H', 'Trace I']
