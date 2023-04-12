@@ -128,7 +128,8 @@ def data_tab():
 
     if way_to_select == "column으로 검색":
         columns=st.text_input("검색할 column을 입력하세요.")
-        st.write(df[[columns], :5])
+        show_df=df[[columns]]
+        st.write(show_df.iloc[:5])
         pass
         
     elif way_to_select == "row으로 검색":
