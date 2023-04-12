@@ -124,7 +124,7 @@ def data_tab():
 
     option = ["column으로 검색", "row으로 검색", "column, row으로 검색"]
     way_to_select = st.selectbox(
-            '검색 방법 선택',
+            label='검색 방법 선택',
             options=option)
 
     if way_to_select=="column으로 검색":
@@ -132,6 +132,9 @@ def data_tab():
         st.write(df[columns,:5])
     
     elif way_to_select=="row으로 검색":
+        pass
+
+    elif way_to_select=="column, row으로 검색":
         pass
     
     else:
