@@ -122,11 +122,12 @@ def data_tab():
     # DataFrame 출력
     st.table(df.iloc[:5])
 
-    option = ("column으로 검색", "row으로 검색", "column, row으로 검색")
+    option = ["column으로 검색", "row으로 검색", "column, row으로 검색"]
     way_to_select = st.selectbox("검색 방법 선택", options=option)
 
     if way_to_select == "column으로 검색":
-        st.write(df[columns, :5])
+        # st.write(df[columns, :5])
+        pass
         
     elif way_to_select == "row으로 검색":
         pass
