@@ -127,7 +127,7 @@ def data_tab():
 
     option = ["column으로 검색", "row으로 검색", "column, row으로 검색"]
     way_to_select = st.selectbox("검색 방법 선택", options=option)
-    search_data(option, df)
+    search_data(way_to_select, df)
 
 
 def link_tab():
