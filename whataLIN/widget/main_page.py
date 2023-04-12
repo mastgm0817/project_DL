@@ -127,7 +127,6 @@ def data_tab():
             '검색 방법 선택',
             options=option)
 
-    
     if way_to_select=="column으로 검색":
         "row으로 검색"
         st.write(df[columns,:5])
