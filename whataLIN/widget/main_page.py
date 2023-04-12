@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 import pickle
 import requests
 
-@st.cache
+@st.cache_data
 def get_table():
 
     with open('whataLIN/poster_data.pickle', 'rb') as file:
