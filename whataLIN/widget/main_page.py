@@ -137,7 +137,12 @@ def data_tab():
             st.write("비정상적인 column 값입니다.")
         
     elif way_to_select == "row으로 검색":
-        pass
+        try:
+            index_name = st.text_input('검색하고 싶은 index를 입력해 주세요')
+            show_df = df.iloc[index_name]
+            st.write(show_df)
+        except:
+            st.write("비정상적인 column 값입니다.")
 
     elif way_to_select == "column, row으로 검색":
         pass
