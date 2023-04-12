@@ -77,10 +77,10 @@ def explain_tab():
     pie_chart(labels, values, title_text='Movie genre')
 
     # 산점도 표시
-    names = ['Trace A', 'Trace B', 'Trace C', 'Trace D', 'Trace E', 'Trace F', 'Trace G', 'Trace H', 'Trace I']
-    colors = ['red', 'blue', 'green', 'orange', 'purple', 'brown', 'pink', 'gray', 'olive', 'cyan']
-    st.write("산점도")
-    scatter_chart(names, colors, 'PCA Component 1','PCA Component 2')
+    # names = ['Trace A', 'Trace B', 'Trace C', 'Trace D', 'Trace E', 'Trace F', 'Trace G', 'Trace H', 'Trace I']
+    # colors = ['red', 'blue', 'green', 'orange', 'purple', 'brown', 'pink', 'gray', 'olive', 'cyan']
+    # st.write("산점도")
+    # scatter_chart(names, colors, 'PCA Component 1','PCA Component 2')
 
 def pie_chart(labels, values, title_text=""):
     '''원형 plotly 차트'''
@@ -89,16 +89,16 @@ def pie_chart(labels, values, title_text=""):
     st.plotly_chart(fig)
 
 
-def scatter_chart(names, colors, x_title_text="", y_title_text=""):  
-    '''산점도'''
+# def scatter_chart(names, colors, x_title_text="", y_title_text=""):  
+#     '''산점도'''
 
-    fig = go.Figure()
-    for i in range(best_n_clusters):
-        cluster_data = X_pca[clusters == i]
-        fig.add_trace(go.Scatter(x=cluster_data[:, 0], y=cluster_data[:, 1], mode='markers', marker_color=colors[i], name=names[i]))
+#     fig = go.Figure()
+#     for i in range(best_n_clusters):
+#         cluster_data = X_pca[clusters == i]
+#         fig.add_trace(go.Scatter(x=cluster_data[:, 0], y=cluster_data[:, 1], mode='markers', marker_color=colors[i], name=names[i]))
 
-    fig.update_layout(xaxis_title=x_title_text, yaxis_title=y_title_text)
-    st.plotly_chart(fig)
+#     fig.update_layout(xaxis_title=x_title_text, yaxis_title=y_title_text)
+#     st.plotly_chart(fig)
 
     
 
