@@ -54,7 +54,7 @@ def intro_tab():
     )
     st.write('---')
 
-    st.subheader('🔗')
+    st.subheader('Link 🔗')
     
     st.write('''
     | 구분 | 이름  | 링크 | 
