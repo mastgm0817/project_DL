@@ -72,6 +72,8 @@ def explain_tab():
         '''
     )
 
+    option=["장르 비율 파이 차트", "장르 클러스터 산점도"]
+    st.selectbox(label="데이터 정보")
     # 파이 차트 표시
     labels = ['action', 'adventure', 'animmation', 'comedy', 'crime', 'drama', 'fantasy', 'horror', 'mystery', 'romance', 'sci-fi', 'short', 'thriler']
     values = [424, 238, 242, 667, 292, 829, 166, 354, 195, 342, 162, 201, 431]
@@ -120,11 +122,21 @@ def data_tab():
     # DataFrame 출력
     st.table(df.iloc[:5])
 
-    st.subheader('각 Columns의 설명입니다.')
-    st.write(
-        '''
-        > * 
-        ''')
+    option = ["column으로 검색", "row으로 검색", "column, row으로 검색"]
+    way_to_select = st.selectbox(
+            '검색 방법 선택',
+            option)
+    
+    if way_to_select=="column으로 검색":
+        "row으로 검색"
+        st.write(df[columns,:5])
+    
+    elif way_to_select=="row으로 검색":
+        pass
+    
+    else:
+        pass
+
 
 def link_tab():
     '''링크 탭 구현'''
