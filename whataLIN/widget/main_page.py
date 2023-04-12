@@ -111,7 +111,7 @@ def explain_tab():
     #파이차트표시
     elif op_chart=="클러스터링 결과":
         
-        fig_pie = get_chart('whataLIN/whyDoYouEzimeMe.pickle')
+        fig_pie = get_chart('whataLIN/IhatePlotly.pickle')
         st.plotly_chart(fig_pie)
 
 
