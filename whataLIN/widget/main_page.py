@@ -108,7 +108,7 @@ def explain_tab():
         st.plotly_chart(fig)
     
     elif op_chart=="클러스터링 결과":
-        fig = get_chart('whataLIN/scatterplot.pickle')
+        fig = get_chart('whataLIN/cluster_piechart.pickle')
         st.plotly_chart(fig)
 
 
