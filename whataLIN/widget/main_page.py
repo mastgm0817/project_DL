@@ -179,5 +179,5 @@ def search_data(option, df):
             st.write(show_df)
 
         except:
-            st.write("비정상적인 column 값입니다.")
+            st.write("검색된 값이 없습니다.")
             # print("비정상적인 column 값입니다.")
