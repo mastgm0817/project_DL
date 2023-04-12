@@ -6,7 +6,7 @@ import requests
 
 def get_table():
 
-    with open('whataLIN/project_DL/whataLIN/poster_data.pickle', 'rb') as file:
+    with open('project_DL/whataLIN/poster_data.pickle', 'rb') as file:
         df = pickle.load(file)
     return df
     
