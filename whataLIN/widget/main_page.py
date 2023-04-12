@@ -4,10 +4,12 @@ import plotly.graph_objects as go
 import pickle
 
 def get_table():
-    df_url = "https://github.com/whataLIN/project_DL/raw/main/whataLIN/df.csv" 
-    return pd.read_csv(df_url)
-    with open('data.pickle', 'rb') as file:
-    df = pickle.load(file)
+    # df_url = "https://github.com/whataLIN/project_DL/raw/main/whataLIN/df.csv" 
+    # return pd.read_csv(df_url)
+    with open('../poster_data.pickle', 'rb') as file:
+        df = pickle.load(file)
+    return df
+    
 
 def build():
     '''메인페이지 하부 탭 정의 및 구현'''
@@ -21,19 +23,7 @@ def build():
     with tab0: intro_tab() # 팀 소개
     with tab1: explain_tab() # 데이터 설명
     with tab2: data_tab() # 데이터 검색
-    with tab3: link_tab() 
-        tab3.subheader("🖇️ Link Tab")
-        tab3.write("추가적인 자료는 아래의 링크에서 확인 하시면 됩니다.")
-        st.write()
-        '''
-
-        | 구분 | 이름  | 링크 | 
-        | :---: | :---: | :---: | 
-        | Kaggle | movie poster | [![Colab](https://img.shields.io/badge/kaggle-College%20Basketball%20Dataset-skyblue)][https://www.kaggle.com/datasets/raman77768/movie-classifier/code] | 
-        | Notion | 딥러닝 프로젝트 | [![Notion](https://img.shields.io/badge/Notion-Sports%20TooToo-lightgrey)][https://www.notion.so/925e2766791248a58cd3bf7623fbb90a] | 
-        | Colab | 🤖전처리 데이터 | [![Colab](https://img.shields.io/badge/colab-Data%20preprocessing-yellow)] | 
-        
-        '''
+    with tab3: link_tab() # 데이터 및 소스 링크
 
 def intro_tab():
     '''팀원 소개 및 역할 분담'''
@@ -64,6 +54,8 @@ def explain_tab():
     except pd.errors.EmptyDataError:
         st.error("CSV 파일을 찾을 수 없습니다.")
         st.stop()
+    
+    st.write(df.iloc[:5])
 
     # 자료 설명 마크다운
     st.subheader("자료 설명")
@@ -110,3 +102,18 @@ def data_tab():
         '''
         > * 
         ''')
+
+def link_tab():
+    '''링크 탭 구현'''
+
+    tab3.subheader("🖇️ Link Tab")
+    tab3.write("추가적인 자료는 아래의 링크에서 확인 하시면 됩니다.")
+    st.write()
+    '''
+    | 구분 | 이름  | 링크 | 
+    | :---: | :---: | :---: | 
+    | Kaggle | movie poster | [![Colab](https://img.shields.io/badge/kaggle-College%20Basketball%20Dataset-skyblue)][https://www.kaggle.com/datasets/raman77768/movie-classifier/code] | 
+    | Notion | 딥러닝 프로젝트 | [![Notion](https://img.shields.io/badge/Notion-Sports%20TooToo-lightgrey)][https://www.notion.so/925e2766791248a58cd3bf7623fbb90a] | 
+    | Colab | 🤖전처리 데이터 | [![Colab](https://img.shields.io/badge/colab-Data%20preprocessing-yellow)] | 
+     
+    '''
