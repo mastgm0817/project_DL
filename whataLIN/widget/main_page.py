@@ -127,10 +127,12 @@ def data_tab():
     way_to_select = st.selectbox("검색 방법 선택", options=option)
 
     if way_to_select == "column으로 검색":
-        columns=st.text_input("검색할 column을 입력하세요.")
-        show_df=df[[columns]]
-        st.write(show_df.iloc[:5])
-        pass
+        try:
+            columns=st.text_input("검색할 column을 입력하세요.")
+            show_df=df[[columns]]
+            st.write(show_df.iloc[:5])
+        except:
+            st.write("비정상적인 column 값입니다.")
         
     elif way_to_select == "row으로 검색":
         pass
