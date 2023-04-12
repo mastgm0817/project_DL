@@ -73,7 +73,7 @@ def explain_tab():
     )
 
     option=["장르 비율 파이 차트", "장르 클러스터 산점도"]
-    st.selectbox(label="데이터 정보", option)
+    st.selectbox("데이터 정보", option)
     # 파이 차트 표시
     labels = ['action', 'adventure', 'animmation', 'comedy', 'crime', 'drama', 'fantasy', 'horror', 'mystery', 'romance', 'sci-fi', 'short', 'thriler']
     values = [424, 238, 242, 667, 292, 829, 166, 354, 195, 342, 162, 201, 431]
