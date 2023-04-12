@@ -6,7 +6,7 @@ import pickle
 def get_table():
     # df_url = "https://github.com/whataLIN/project_DL/raw/main/whataLIN/df.csv" 
     # return pd.read_csv(df_url)
-    with open('../poster_data.pickle', 'rb') as file:
+    with open('https://github.com/whataLIN/project_DL/raw/main/whataLIN/poster_data.pickle', 'rb') as file:
         df = pickle.load(file)
     return df
     
