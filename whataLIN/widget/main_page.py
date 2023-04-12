@@ -173,15 +173,8 @@ def search_data(option, df):
                 if columns in df.columns:
                     index_name = st.text_input('검색할 index를 입력해 주세요').replace(" ","")
                     index_name = list(map(int, index_name.split(",")))
-                    show_df = df[(df[columns] == index_name)]
-                
-                # 검색 결과 출력하기
-                    if not show_df.empty:
-                        st.write(show_df)
-                    else:
-                        st.write('검색된 Index가 없습니다.')
-                else:
-                    show_df = df[(df[columns] == index_name)]
-                    st.write(show_df)
+
+            show_df = df[(df[columns] == index_name)]
+            st.write(show_df)
         except:
             st.write("비정상적인 column 값입니다.")
