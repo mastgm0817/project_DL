@@ -1,10 +1,13 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
+import pickle
 
 def get_table():
     df_url = "https://github.com/whataLIN/project_DL/raw/main/whataLIN/df.csv" 
     return pd.read_csv(df_url)
+    with open('data.pickle', 'rb') as file:
+    df = pickle.load(file)
 
 def build():
     '''메인페이지 하부 탭 정의 및 구현'''
@@ -17,8 +20,8 @@ def build():
    
     with tab0: intro_tab() # 팀 소개
     with tab1: explain_tab() # 데이터 설명
-    with tab2: data_tab() # 
-    with tab3:
+    with tab2: data_tab() # 데이터 검색
+    with tab3: link_tab() 
         tab3.subheader("🖇️ Link Tab")
         tab3.write("추가적인 자료는 아래의 링크에서 확인 하시면 됩니다.")
         st.write()
