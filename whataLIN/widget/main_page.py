@@ -111,6 +111,7 @@ def data_tab():
 
     st.subheader("🗃 Data Tab")
     st.write("다음은 CSV 데이터의 일부입니다.")
+    st.write("데이터를 검색할 수 있습니다.")
     # GitHub URL
     # CSV 파일 읽기
 
@@ -139,6 +140,8 @@ def data_tab():
     elif way_to_select == "row으로 검색":
         try:
             index_name = st.text_input('검색하고 싶은 index를 입력해 주세요')
+            if ',' in columns:
+                columns = columns.split(",")
             show_df = df.iloc[index_name]
             st.write(show_df)
         except:
