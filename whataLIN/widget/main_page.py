@@ -98,24 +98,12 @@ def explain_tab():
     # st.write("산점도")
     # scatter_chart(names, colors, 'PCA Component 1','PCA Component 2')
 
+
 def pie_chart(labels, values, title_text=""):
     '''원형 plotly 차트'''
     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
     fig.update_layout(title_text=title_text)
     st.plotly_chart(fig)
-
-
-# def scatter_chart(names, colors, x_title_text="", y_title_text=""):  
-#     '''산점도'''
-
-#     fig = go.Figure()
-#     for i in range(best_n_clusters):
-#         cluster_data = X_pca[clusters == i]
-#         fig.add_trace(go.Scatter(x=cluster_data[:, 0], y=cluster_data[:, 1], mode='markers', marker_color=colors[i], name=names[i]))
-
-#     fig.update_layout(xaxis_title=x_title_text, yaxis_title=y_title_text)
-#     st.plotly_chart(fig)
-
     
 
 def data_tab():
@@ -152,9 +140,8 @@ def data_tab():
     elif way_to_select == "row으로 검색":
         try:
             index_name = st.text_input('검색하고 싶은 index를 입력해 주세요')
-            if ',' in columns:
-                columns = columns.split(",")
-            show_df = df.iloc[[index_name]]
+            index_name = list(map(int, index_name.split(",")))
+            show_df = df.iloc[index_name]
             st.write(show_df)
         except:
             st.write("비정상적인 행 값입니다.")
