@@ -25,7 +25,9 @@ def build():
 
     # 탭 정의
     tab_labels = [
+
         "Introduce", "Analysis", "Search"
+
     ]
     tab0, tab1, tab2= st.tabs(tab_labels)
    
@@ -33,6 +35,7 @@ def build():
     with tab1: explain_tab() # 데이터 설명
     with tab2: data_tab() # 데이터 검색
     # with tab3: link_tab() # 데이터 및 소스 링크
+
 
 def intro_tab():
     '''팀원 소개 및 역할 분담'''
@@ -126,7 +129,7 @@ def pie_chart(labels, values, title_text=""):
 def data_tab():
     '''데이터 탭 구현'''
 
-    st.subheader("🗃 Data Tab")
+    st.subheader("🗃 Data")
     st.write("다음은 CSV 데이터의 일부입니다.")
     st.write("데이터를 검색할 수 있습니다.")
     # GitHub URL
@@ -141,6 +144,21 @@ def data_tab():
     # DataFrame 출력
     st.table(df.iloc[:5])
 
+<<<<<<< HEAD
+def link_tab():
+    '''링크 탭 구현'''
+    tab3.subheader("🖇️ Link")
+    tab3.write("추가적인 자료는 아래의 링크에서 확인 하시면 됩니다.")
+    st.write()
+    '''
+    | 구분 | 이름  | 링크 | 
+    | :---: | :---: | :---: | 
+    | Kaggle | movie poster | [![Colab](https://img.shields.io/badge/kaggle-College%20Basketball%20Dataset-skyblue)][https://www.kaggle.com/datasets/raman77768/movie-classifier/code] | 
+    | Notion | 딥러닝 프로젝트 | [![Notion](https://img.shields.io/badge/Notion-Sports%20TooToo-lightgrey)][https://www.notion.so/925e2766791248a58cd3bf7623fbb90a] | 
+    | Colab | 🤖전처리 데이터 | [![Colab](https://img.shields.io/badge/colab-Data%20preprocessing-yellow)] | 
+     
+    '''
+=======
     option = ["column으로 검색", "row로 검색", "column, row로 검색"]
     way_to_select = st.selectbox("검색 방법 선택", options=option)
     search_data(way_to_select, df)
@@ -192,3 +210,4 @@ def search_data(option, df):
         except:
             st.write("검색된 값이 없습니다.")
             # ("비정상적인 column 값입니다.")
+>>>>>>> 63c30813c4162bd4a3b709fe4da9d7716158bc3c
