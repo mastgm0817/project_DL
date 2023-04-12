@@ -142,7 +142,7 @@ def data_tab():
             show_df = df.iloc[index_name]
             st.write(show_df)
         except:
-            st.write("비정상적인 column 값입니다.")
+            st.write("비정상적인 행 값입니다.")
 
     elif way_to_select == "column, row으로 검색":
         pass

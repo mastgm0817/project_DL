@@ -13,7 +13,7 @@ def build():
     # 사이드바 메뉴
     args = [
         "Contents",
-        [OptionMenu.MAIN.value, "데이터페이지", "장르 예측"] 
+        [OptionMenu.MAIN.value, "장르 예측"] 
     ]
     # CSS 꾸미기
     styles = {
