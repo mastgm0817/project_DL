@@ -90,7 +90,7 @@ def explain_tab():
         '''
     )
 
-    option=["장르 비율 파이 차트", "장르 클러스터 산점도"]
+    option=["장르 비율 파이 차트", "장르 클러스터 산점도", "클러스터링 결과"]
     op_chart=st.selectbox("데이터 정보", option)
 
     # 파이 차트 표시
@@ -103,6 +103,12 @@ def explain_tab():
         # 산점도 표시
         fig = get_chart('whataLIN/scatterplot.pickle')
         st.plotly_chart(fig)
+    
+    elif op_chart=="클러스터링 결과":
+        fig = get_chart('whataLIN/scatterplot.pickle')
+        st.plotly_chart(fig)
+
+
 
     # names = ['Trace A', 'Trace B', 'Trace C', 'Trace D', 'Trace E', 'Trace F', 'Trace G', 'Trace H', 'Trace I']
     # colors = ['red', 'blue', 'green', 'orange', 'purple', 'brown', 'pink', 'gray', 'olive', 'cyan']
