@@ -115,7 +115,7 @@ def data_tab():
         st.error("CSV 파일을 찾을 수 없습니다.")
         st.stop()
     # DataFrame 출력
-    st.table(df[:5])
+    st.table(df.iloc[:5])
     # st.dataframe(df)
     st.subheader('각 Columns의 설명입니다.')
     st.write(
