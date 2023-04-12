@@ -111,15 +111,8 @@ def explain_tab():
     #파이차트표시
     elif op_chart=="클러스터링 결과":
         
-        fig_pie = get_chart('whataLIN/cluster_piechart.pickle')
+        fig_pie = get_chart('whataLIN/whyDoYouEzimeMe.pickle')
         st.plotly_chart(fig_pie)
-
-
-
-    # names = ['Trace A', 'Trace B', 'Trace C', 'Trace D', 'Trace E', 'Trace F', 'Trace G', 'Trace H', 'Trace I']
-    # colors = ['red', 'blue', 'green', 'orange', 'purple', 'brown', 'pink', 'gray', 'olive', 'cyan']
-    # st.write("산점도")
-    # scatter_chart(names, colors, 'PCA Component 1','PCA Component 2')
 
 
 def pie_chart(labels, values, title_text=""):
