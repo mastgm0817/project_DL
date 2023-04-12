@@ -25,7 +25,7 @@ def build():
 
     # 탭 정의
     tab_labels = [
-        "🏠 Main", "🔎Explain", "🗃 Data"
+        "introduce", "analysis", "search"
     ]
     tab0, tab1, tab2= st.tabs(tab_labels)
    
