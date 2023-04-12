@@ -128,7 +128,7 @@ def data_tab():
 
     if way_to_select == "column으로 검색":
         try:
-            columns=st.text_input("검색할 column을 입력하세요.")
+            columns=(st.text_input("검색할 column을 입력하세요.")).replace(" ","")
             if ',' in columns:
                 columns = columns.split(",")
             show_df=df[[columns]]
