@@ -156,7 +156,7 @@ def search_data(option, df):
         except:
             st.write("검색된 값이 없습니다.")
         
-    elif option == "row으로 검색":
+    elif option == "row로 검색":
         try:
             index_name = st.text_input('검색할 index를 입력해 주세요').replace(" ","")
             index_name = list(map(int, index_name.split(",")))
@@ -165,24 +165,23 @@ def search_data(option, df):
         except:
             st.write("검색된 값이 없습니다.")
 
-    elif option == "column, row으로 검색":
+    elif option == "column, row로 검색":
         try:
             columns=(st.text_input("검색할 column을 입력하세요.")).replace(" ","")
             if ',' in columns:
                 columns = columns.split(",")
-                if column_names in df.columns:
-                    c_index = st.text_input('검색할 Index를 입력하세요 ')
-
-                if c_index.isdigit():
-                    c_index = int(c_index)
-                    filtered_df = df[(df[column_names] == c_index)]
+                if columns in df.columns:
+                    index_name = st.text_input('검색할 index를 입력해 주세요').replace(" ","")
+                    index_name = list(map(int, index_name.split(",")))
+                    show_df = df[(df[columns] == index_name)]
+                
                 # 검색 결과 출력하기
-                    if not filtered_df.empty:
-                        st.write(filtered_df)
+                    if not show_df.empty:
+                        st.write(show_df)
                     else:
                         st.write('검색된 Index가 없습니다.')
                 else:
-                    filtered_df = df[(df[column_names] == c_index)]
-                    st.write(filtered_df)
+                    show_df = df[(df[columns] == index_name)]
+                    st.write(show_df)
         except:
             st.write("비정상적인 column 값입니다.")
