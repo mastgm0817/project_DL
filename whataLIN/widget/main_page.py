@@ -131,7 +131,7 @@ def data_tab():
             columns=(st.text_input("검색할 column을 입력하세요.")).replace(" ","")
             if ',' in columns:
                 columns = columns.split(",")
-            show_df=df[[columns]]
+            show_df=df[columns]
             st.write(show_df.iloc[:5])
         except:
             st.write("비정상적인 column 값입니다.")
