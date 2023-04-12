@@ -47,9 +47,9 @@ def intro_tab():
         '''
         | 이름 | 역할 분담 | GitHub |
         | :---: | :---: | :---: |
-        | 고병연 | efficientNet, CNN | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/whataLIN)|
-        | 박상원 | 시각화 |  [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/mastgm0817)|
-        | 이규린 | ResNet, streamlit 구현 |  [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/sangwonsszz)|
+        | 고병연 | efficientNet, CNN | [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/mastgm0817)|
+        | 박상원 | 시각화 |  [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/sangwonsszz)|
+        | 이규린 | ResNet, streamlit 구현 |  [![GitHub](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/whataLIN)|
         '''
     )
     st.write('---')
