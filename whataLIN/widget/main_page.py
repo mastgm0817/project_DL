@@ -76,10 +76,26 @@ def explain_tab():
     values = [424, 238, 242, 667, 292, 829, 166, 354, 195, 342, 162, 201, 431]
     pie_chart(labels, values, title_text='Movie genre')
 
+    names = ['Trace A', 'Trace B', 'Trace C', 'Trace D', 'Trace E', 'Trace F', 'Trace G', 'Trace H', 'Trace I']
+    colors = ['red', 'blue', 'green', 'orange', 'purple', 'brown', 'pink', 'gray', 'olive', 'cyan']
+    scatter_chart(names, colors, 'PCA Component 1','PCA Component 2')
+
 def pie_chart(labels, values, title_text=""):
     '''원형 plotly 차트'''
     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
     fig.update_layout(title_text=title_text)
+    st.plotly_chart(fig)
+
+
+def scatter_chart(names, colors, x_title_text="", y_title_text=""):        #TODO : labels, values, title_text=""
+    '''산점도'''
+
+    fig = go.Figure()
+    for i in range(best_n_clusters):
+        cluster_data = X_pca[clusters == i]
+        fig.add_trace(go.Scatter(x=cluster_data[:, 0], y=cluster_data[:, 1], mode='markers', marker_color=colors[i], name=names[i]))
+
+    fig.update_layout(xaxis_title=x_title_text, yaxis_title=y_title_text)
     st.plotly_chart(fig)
 
 def data_tab():
