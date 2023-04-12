@@ -4,6 +4,7 @@ import plotly.graph_objects as go
 import pickle
 import requests
 
+@st.cache
 def get_table():
 
     with open('whataLIN/poster_data.pickle', 'rb') as file:
@@ -109,14 +110,16 @@ def data_tab():
     st.write("다음은 CSV 데이터의 일부입니다.")
     # GitHub URL
     # CSV 파일 읽기
+
     try:
         df = get_table()
     except pd.errors.EmptyDataError:
         st.error("CSV 파일을 찾을 수 없습니다.")
         st.stop()
+
     # DataFrame 출력
     st.table(df.iloc[:5])
-    # st.dataframe(df)
+
     st.subheader('각 Columns의 설명입니다.')
     st.write(
         '''
