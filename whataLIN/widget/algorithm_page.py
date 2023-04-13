@@ -1,4 +1,4 @@
-import streamlit
+import streamlit as st
 import torch
 
 st.write("딥러닝 페이지입니다.")
