@@ -100,11 +100,11 @@ def pred_tab():
 
     try:
         image=get_image()
+        if image != None:
+            st.image(image, caption='업로드된 이미지', use_column_width=True)
     except:
         st.write("이미지가 여기에 표시됩니다.")
-    if image != None:
-        st.image(image, caption='업로드된 이미지', use_column_width=True)
-
+    
         pred_button=st.button("예측")
 
     if pred_button:
