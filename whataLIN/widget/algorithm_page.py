@@ -4,11 +4,21 @@ import requests
 
 def build():
     '''딥러닝 결과 출력 페이지 정의 및 구현'''
+
+    tab_labels = [
+        "about Model", "Predict"
+    ]
+    tab0, tab1 = st.tabs(tab_labels)
+   
+    with tab0: model_tab() # 팀 소개
+    with tab1: pred_tab() # 데이터 설명
     st.subheader("딥러닝 페이지입니다.")
     show_pred()
 
+def model_tab():
+    pass
 
-def show_pred():
+def pred_tab():
 
     get_image()
     st.write("어떤 알고리즘으로 예측해 볼까요?")
