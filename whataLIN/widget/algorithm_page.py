@@ -98,7 +98,7 @@ def model_tab():
 
 def pred_tab():
 
-    get_image()
+    image=get_image()
     if image != None:
         st.image(image, caption='업로드된 이미지', use_column_width=True)
 
