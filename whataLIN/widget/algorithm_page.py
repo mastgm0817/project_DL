@@ -1,9 +1,6 @@
 import streamlit as st
 import torch
 
-st.write("딥러닝 페이지입니다.")
-show_pred()
-
 def show_pred():
 
     get_image()
@@ -27,3 +24,6 @@ def get_image():
     
     except:
         st.write(" ")
+
+st.write("딥러닝 페이지입니다.")
+show_pred()
