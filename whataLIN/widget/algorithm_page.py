@@ -140,7 +140,7 @@ def get_image():
             
 
 def pred_and_show(img):
-    model = torch.load('your_model.pth')
+    model = torch.load('Resnet50_final.pth')
 
     image = Image.open(img)
     transform = transforms.Compose([
