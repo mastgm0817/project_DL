@@ -8,3 +8,6 @@ choice = st.session_state["choice"]
 
 if choice == sidebar.OptionMenu.MAIN.value:
     main_page.build()
+
+if choice == sidebar.OptionMenu.Algorithm.value:
+    algorithm_page.build()
