@@ -17,6 +17,7 @@ def draw_chart(root):
     with open(root, 'rb') as file:
         fig = pickle.load(file)
     st.plotly_chart(fig)
+    fig.update_layout(width=300, height=400)
     
 
 def build():
@@ -102,21 +103,18 @@ def explain_tab():
     # 산점도 표시
     elif op_chart=="장르 클러스터 산점도": 
         draw_chart('whataLIN/scatterplot.pickle')
-        # fig_scat = get_chart('whataLIN/scatterplot.pickle')
-        # st.plotly_chart(fig_scat)
         
     #파이차트표시
     elif op_chart=="클러스터링 결과":
         draw_chart('whataLIN/clus_pie_1.pickle')
-        # fig_pie = get_chart('whataLIN/clus_pie_1.pickle')
-        # st.plotly_chart(fig_pie)
+        
 
 
-def pie_chart(labels, values, title_text=""):
-    '''원형 plotly 차트'''
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
-    fig.update_layout(title_text=title_text)
-    st.plotly_chart(fig)
+# def pie_chart(labels, values, title_text=""):
+#     '''원형 plotly 차트'''
+#     fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
+#     fig.update_layout(title_text=title_text)
+#     st.plotly_chart(fig)
     
 
 def data_tab():
