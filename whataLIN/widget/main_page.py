@@ -96,7 +96,7 @@ def explain_tab():
     op_chart=st.selectbox("데이터 정보", option)
 
     # 파이 차트 표시
-    if op_chart=="장르 비율 파이 차트":     whataLIN/7kpieGraph.pickle
+    if op_chart=="장르 비율 파이 차트": 
         draw_chart('whataLIN/7kpieGraph.pickle')
 
     # 산점도 표시
