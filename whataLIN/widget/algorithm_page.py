@@ -123,7 +123,7 @@ def pred_tab():
             st.image(image, caption='업로드된 이미지', use_column_width=True)
             pred_button=st.button("예측")
             if pred_button:
-                model = torch.load('your_model.pth')
+                model = torch.load('Resnet50_final.pth')
                 predict(image)
     except Exception as e:
         st.write(f"예외 발생: {e}")
@@ -184,7 +184,6 @@ def predict(image):
 
     train_csv = pd.read_csv('whataLIN/train.csv')
     genres = train_csv.columns.values[2:]
-    model = torch.load('Resnet50_final.pth')
     
     # prepare the test dataset and dataloader
 
