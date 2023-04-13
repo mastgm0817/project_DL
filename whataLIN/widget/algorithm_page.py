@@ -98,7 +98,10 @@ def model_tab():
 
 def pred_tab():
 
-    image=get_image()
+    try:
+        image=get_image()
+    except:
+        st.write("이미지가 여기에 표시됩니다.")
     if image != None:
         st.image(image, caption='업로드된 이미지', use_column_width=True)
 
