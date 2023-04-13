@@ -2,6 +2,75 @@ import streamlit as st
 import torch
 import requests
 from PIL import Image
+import torchvision.transforms as transforms
+
+class ImageDataset(Dataset):
+    def __init__(self, csv, train, test):
+        self.csv = csv
+        self.train = train
+        self.test = test
+        self.all_image_names = self.csv[:]['Id']
+        self.all_labels = np.array(self.csv.drop(['Id', 'Genre'], axis=1))
+        self.train_ratio = int(0.85 * len(self.csv))
+        self.valid_ratio = len(self.csv) - self.train_ratio
+
+        # set the training data images and labels
+        if self.train == True:
+            print(f"Number of training images: {self.train_ratio}")
+            self.image_names = list(self.all_image_names[:self.train_ratio])
+            self.labels = list(self.all_labels[:self.train_ratio])
+
+            # define the training transforms
+            self.transform = transforms.Compose([
+                transforms.ToPILImage(),
+                transforms.Resize((224, 224)),
+                transforms.RandomHorizontalFlip(p=0.5),
+                transforms.RandomRotation(degrees=45),
+                transforms.ToTensor(),
+            ])
+
+        # set the validation data images and labels
+        elif self.train == False and self.test == False:
+            print(f"Number of validation images: {self.valid_ratio}")
+            self.image_names = list(self.all_image_names[-self.valid_ratio:-10])
+            self.labels = list(self.all_labels[-self.valid_ratio:])
+
+            # define the validation transforms
+            self.transform = transforms.Compose([
+                transforms.ToPILImage(),
+                transforms.Resize((224, 224)),
+                transforms.ToTensor(),
+            ])
+
+        # set the test data images and labels, only last 10 images
+        # this, we will use in a separate inference script
+        elif self.test == True and self.train == False:
+            self.image_names = list(self.all_image_names[-10:])
+            self.labels = list(self.all_labels[-10:])
+
+             # define the test transforms
+            self.transform = transforms.Compose([
+                transforms.ToPILImage(),
+                transforms.ToTensor(),
+            ])
+
+    def __len__(self):
+        return len(self.image_names)
+    
+    def __getitem__(self, index):
+        image = cv2.imread(f"/content/movie-classifier/Multi_Label_dataset/Images/{self.image_names[index]}.jpg")
+        # convert the image from BGR to RGB color format
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        # apply image transforms
+        image = self.transform(image)
+        targets = self.labels[index]
+        
+        return {
+            'image': torch.tensor(image, dtype=torch.float32),
+            'label': torch.tensor(targets, dtype=torch.float32)
+        }
+
+
 
 def build():
     '''딥러닝 결과 출력 페이지 정의 및 구현'''
@@ -47,7 +116,53 @@ def get_image():
     except:
         st.write(" ")
 
-def pred_genre():
-    pass
+def pred_and_show(img):
+    model = torch.load('your_model.pth')
 
+    image = Image.open(img)
+    transform = transforms.Compose([
+        transforms.Resize((224,224)),
+        transforms.ToTensor(),
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    ])
+    image = transform(image).unsqueeze(0)
+
+def predict(image_path, model, genres):
+
+    train_csv = pd.read_csv('whataLIN/train.csv')
+    genres = train_csv.columns.values[2:]
+    
+    # prepare the test dataset and dataloader
+    test_data = ImageDataset(
+        train_csv, train=False, test=True
+    )
+    test_loader = DataLoader(
+        test_data,
+        batch_size=1,
+        shuffle=False
+    )
+    for counter, data in enumerate(test_loader):
+        image, target = data['image'].to(device), data['label']
+        # get all the index positions where value == 1
+        target_indices = [i for i in range(len(target[0])) if target[0][i] == 1]
+        # get the predictions by passing the image through the model
+        outputs = net(image)
+        outputs = torch.sigmoid(outputs)
+        outputs = outputs.detach().cpu()
+        sorted_indices = np.argsort(outputs[0])
+        best = sorted_indices[-3:]
+        string_predicted = ''
+        string_actual = ''
+        for i in range(len(best)):
+            string_predicted += f"{genres[best[i]]}    "
+        for i in range(len(target_indices)):
+            string_actual += f"{genres[target_indices[i]]}    "
+        image = image.squeeze(0)
+        image = image.detach().cpu().numpy()
+        image = np.transpose(image, (1, 2, 0))
+        plt.imshow(image)
+        plt.axis('off')
+        plt.title(f"PREDICTED: {string_predicted}\nACTUAL: {string_actual}")
+
+        
 
