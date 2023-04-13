@@ -128,8 +128,7 @@ def pred_tab():
                 model = torch.load('whataLIN/Resnet50_final.pth')
                 predict(image)
     except Exception as e:
-        st.write(f"예외 발생: {e}")
-        st.write("이미지가 여기에 표시됩니다.")
+        st.write(" ")
     
     
 
