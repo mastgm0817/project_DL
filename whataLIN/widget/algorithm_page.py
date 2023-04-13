@@ -58,21 +58,21 @@ from torch.utils.data import Dataset,DataLoader
 #                 transforms.ToTensor(),
 #             ])
 
-    def __len__(self):
-        return len(self.image_names)
+    # def __len__(self):
+    #     return len(self.image_names)
     
-    def __getitem__(self, index):
-        image = cv2.imread(f"/content/movie-classifier/Multi_Label_dataset/Images/{self.image_names[index]}.jpg")
-        # convert the image from BGR to RGB color format
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        # apply image transforms
-        image = self.transform(image)
-        targets = self.labels[index]
+    # def __getitem__(self, index):
+    #     image = cv2.imread(f"/content/movie-classifier/Multi_Label_dataset/Images/{self.image_names[index]}.jpg")
+    #     # convert the image from BGR to RGB color format
+    #     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    #     # apply image transforms
+    #     image = self.transform(image)
+    #     targets = self.labels[index]
         
-        return {
-            'image': torch.tensor(image, dtype=torch.float32),
-            'label': torch.tensor(targets, dtype=torch.float32)
-        }
+    #     return {
+    #         'image': torch.tensor(image, dtype=torch.float32),
+    #         'label': torch.tensor(targets, dtype=torch.float32)
+    #     }
 
 def model(pretrained, requires_grad):
     model = models.resnet50(progress=True, pretrained=pretrained)
