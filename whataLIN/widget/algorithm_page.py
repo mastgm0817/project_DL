@@ -1,5 +1,6 @@
 import streamlit as st
 import torch
+import requests
 
 def show_pred():
 
