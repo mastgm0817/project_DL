@@ -2,6 +2,12 @@ import streamlit as st
 import torch
 import requests
 
+def build():
+    '''딥러닝 결과 출력 페이지 정의 및 구현'''
+    st.subheader("딥러닝 페이지입니다.")
+    show_pred()
+
+
 def show_pred():
 
     get_image()
@@ -26,5 +32,4 @@ def get_image():
     except:
         st.write(" ")
 
-st.write("딥러닝 페이지입니다.")
-show_pred()
+

@@ -1,5 +1,5 @@
 import streamlit as st
-from widget import sidebar, main_page, algorithm_page
+from widget import sidebar, algorithm_page, main_page
 
 with st.sidebar:
     sidebar.build()
