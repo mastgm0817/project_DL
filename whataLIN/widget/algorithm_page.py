@@ -3,6 +3,7 @@ import torch
 import requests
 from PIL import Image
 import torchvision.transforms as transforms
+from torch.utils.data import Dataset,DataLoader
 
 class ImageDataset(Dataset):
     def __init__(self, csv, train, test):
