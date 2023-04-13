@@ -16,14 +16,21 @@ def build():
 
 
 def model_tab():
-    pass
+    option = ["구조", "손실"]
+    op_img=st.selectbox("모델 정보", option)
+    if op_img=="구조":
+        url='whataLIN/epoch-loss.png'
+    else:
+        url='whataLIN/structure.png'
+    image = Image.open(url)
+    st.image(image, use_column_width=True)
 
 def pred_tab():
 
     get_image()
-    st.write("어떤 알고리즘으로 예측해 볼까요?")
-
-    option = ["SimpleCNN", "ResNet", "NfficientNet"]
+    pred_button=st.button("예측")
+    if pred_button:
+        pred_genre()
 
 def get_image():
 
@@ -38,5 +45,8 @@ def get_image():
     
     except:
         st.write(" ")
+
+def pred_genre():
+    pass
 
 
