@@ -125,7 +125,7 @@ def pred_tab():
             if pred_button:
                 model = torch.load('your_model.pth')
                 predict(image)
-    except as e:
+    except Exception as e:
         st.write(f"예외 발생: {e}")
         st.write("이미지가 여기에 표시됩니다.")
     
