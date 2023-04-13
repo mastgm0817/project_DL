@@ -123,7 +123,7 @@ def pred_tab():
             st.image(image, caption='업로드된 이미지', use_column_width=True)
             pred_button=st.button("예측")
             if pred_button:
-                model = torch.load('Resnet50_final.pth')
+                model = torch.load('whataLIN/Resnet50_final.pth')
                 predict(image)
     except Exception as e:
         st.write(f"예외 발생: {e}")
@@ -140,7 +140,7 @@ def get_image():
             
 
 def pred_and_show(img):
-    model = torch.load('Resnet50_final.pth')
+    model = torch.load('whataLIN/Resnet50_final.pth')
 
     image = Image.open(img)
     transform = transforms.Compose([
@@ -160,7 +160,7 @@ def predict(image):
     optimizer = optim.Adam(model2.parameters(), lr=lr)
     criterion = nn.BCELoss()
     # read the training csv file
-    train_csv = pd.read_csv('/content/movie-classifier/Multi_Label_dataset/train.csv')
+    train_csv = pd.read_csv('whataLIN/train.csv')
     # train dataset
     train_data = ImageDataset(
         train_csv, train=True, test=False
