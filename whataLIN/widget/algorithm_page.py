@@ -99,23 +99,22 @@ def model_tab():
 def pred_tab():
 
     get_image()
-    pred_button=st.button("예측")
+    if image != None:
+        st.image(image, caption='업로드된 이미지', use_column_width=True)
+
+        pred_button=st.button("예측")
+
     if pred_button:
-        pred_genre()
+        model = torch.load('your_model.pth')
+        predict(model)
 
 def get_image():
 
     from PIL import Image
     uploaded_file = st.file_uploader("포스터 이미지 파일 업로드", type=['jpg', 'jpeg', 'png'])
-
-    try: 
-        if uploaded_file is not None:
-            image = Image.open(uploaded_file)
-            st.image(image, caption='업로드된 이미지', use_column_width=True)
-        else: st.write("이미지가 여기에 표시됩니다.")
-    
-    except:
-        st.write(" ")
+    image = Image.open(uploaded_file)
+    return image
+            
 
 def pred_and_show(img):
     model = torch.load('your_model.pth')
@@ -128,10 +127,11 @@ def pred_and_show(img):
     ])
     image = transform(image).unsqueeze(0)
 
-def predict(image_path, model, genres):
+def predict():
 
     train_csv = pd.read_csv('whataLIN/train.csv')
     genres = train_csv.columns.values[2:]
+    model = torch.load('Resnet50_final.pth')
     
     # prepare the test dataset and dataloader
     test_data = ImageDataset(
@@ -142,6 +142,8 @@ def predict(image_path, model, genres):
         batch_size=1,
         shuffle=False
     )
+
+
     for counter, data in enumerate(test_loader):
         image, target = data['image'].to(device), data['label']
         # get all the index positions where value == 1
