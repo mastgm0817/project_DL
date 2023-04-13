@@ -4,6 +4,7 @@ from enum import Enum
 
 class OptionMenu(Enum):
     MAIN = "메인페이지"
+    Algorithm = "장르 예측"
 
 def build():
     '''Option Menu를 통한 Sidebar 구현'''
@@ -13,7 +14,7 @@ def build():
     # 사이드바 메뉴
     args = [
         "Contents",
-        [OptionMenu.MAIN.value, "장르 예측"] 
+        [OptionMenu.MAIN.value, OptionMenu.Algorithm.value]
     ]
     # CSS 꾸미기
     styles = {
