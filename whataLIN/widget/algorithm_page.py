@@ -4,6 +4,7 @@ import requests
 from PIL import Image
 import torchvision.transforms as transforms
 from torch.utils.data import Dataset,DataLoader
+from torchvision import models as models
 
 class ImageDataset(Dataset):
     def __init__(self, csv, train, test):
@@ -71,6 +72,23 @@ class ImageDataset(Dataset):
             'label': torch.tensor(targets, dtype=torch.float32)
         }
 
+def model(pretrained, requires_grad):
+    model = models.resnet50(progress=True, pretrained=pretrained)
+    # to freeze the hidden layers
+    if requires_grad == False:
+        for param in model.parameters():
+            param.requires_grad = False
+    # to train the hidden layers
+    elif requires_grad == True:
+        for param in model.parameters():
+            param.requires_grad = True
+    # make the classification layer learnable
+    # we have 25 classes in total
+    model.fc = nn.Linear(2048, 25)
+    return model
+
+
+
 
 
 def build():
@@ -96,6 +114,7 @@ def model_tab():
     image = Image.open(url)
     st.image(image, use_column_width=True)
 
+
 def pred_tab():
 
     try:
@@ -105,7 +124,7 @@ def pred_tab():
             pred_button=st.button("예측")
             if pred_button:
                 model = torch.load('your_model.pth')
-                predict(model)
+                predict(image)
     except:
         st.write("이미지가 여기에 표시됩니다.")
     
@@ -130,13 +149,44 @@ def pred_and_show(img):
     ])
     image = transform(image).unsqueeze(0)
 
-def predict():
-
+def predict(image):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    model2 = model(pretrained=True, requires_grad=False).to(device)
+    # learning parameters
+    lr = 0.0001
+    epochs = 3
+    batch_size = 32
+    optimizer = optim.Adam(model2.parameters(), lr=lr)
+    criterion = nn.BCELoss()
+    # read the training csv file
+    train_csv = pd.read_csv('/content/movie-classifier/Multi_Label_dataset/train.csv')
+    # train dataset
+    train_data = ImageDataset(
+        train_csv, train=True, test=False
+    )
+    # validation dataset
+    valid_data = ImageDataset(
+        train_csv, train=False, test=False
+    )
+    # train data loader
+    train_loader = DataLoader(
+        train_data, 
+        batch_size=batch_size,
+        shuffle=True
+    )
+    # validation data loader
+    valid_loader = DataLoader(
+        valid_data, 
+        batch_size=batch_size,
+        shuffle=False
+    )
+    
     train_csv = pd.read_csv('whataLIN/train.csv')
     genres = train_csv.columns.values[2:]
     model = torch.load('Resnet50_final.pth')
     
     # prepare the test dataset and dataloader
+
     test_data = ImageDataset(
         train_csv, train=False, test=True
     )
@@ -145,7 +195,6 @@ def predict():
         batch_size=1,
         shuffle=False
     )
-
 
     for counter, data in enumerate(test_loader):
         image, target = data['image'].to(device), data['label']
