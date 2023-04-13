@@ -17,7 +17,7 @@ def draw_chart(root):
         fig = pickle.load(file)
     if root!='whataLIN/clus_pie_1.pickle':
         fig.update_layout(width=700, height=450)
-        
+
     st.plotly_chart(fig)
 
     
@@ -70,16 +70,6 @@ def intro_tab():
 
 
 def explain_tab():
-    st.subheader("🔎Explain")
-
-    # 표 데이터 로딩
-    try:
-        df = get_table()
-    except pd.errors.EmptyDataError:
-        st.error("CSV 파일을 찾을 수 없습니다.")
-        st.stop()
-    
-    st.write(df.iloc[:5])
 
     # 자료 설명 마크다운
     st.subheader("자료 설명")
@@ -95,6 +85,16 @@ def explain_tab():
         '''
     )
 
+        # 표 데이터 로딩
+    try:
+        df = get_table()
+    except pd.errors.EmptyDataError:
+        st.error("CSV 파일을 찾을 수 없습니다.")
+        st.stop()
+    
+    st.write(df.iloc[:5])
+
+    st.subheader("데이터 차트")
     option=["장르 비율 파이 차트", "장르 클러스터 산점도", "클러스터링 결과"]
     op_chart=st.selectbox("데이터 정보", option)
 
