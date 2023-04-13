@@ -125,7 +125,8 @@ def pred_tab():
             if pred_button:
                 model = torch.load('your_model.pth')
                 predict(image)
-    except:
+    except as e:
+        st.write(f"예외 발생: {e}")
         st.write("이미지가 여기에 표시됩니다.")
     
     
@@ -180,7 +181,7 @@ def predict(image):
         batch_size=batch_size,
         shuffle=False
     )
-    
+
     train_csv = pd.read_csv('whataLIN/train.csv')
     genres = train_csv.columns.values[2:]
     model = torch.load('Resnet50_final.pth')
