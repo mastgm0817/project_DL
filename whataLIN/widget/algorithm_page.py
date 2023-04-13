@@ -20,9 +20,9 @@ def model_tab():
     option = ["구조", "손실"]
     op_img=st.selectbox("모델 정보", option)
     if op_img=="구조":
-        url='whataLIN/epoch-loss.png'
-    else:
         url='whataLIN/structure.png'
+    else:
+        url='whataLIN/epoch-loss.png'
     image = Image.open(url)
     st.image(image, use_column_width=True)
 
