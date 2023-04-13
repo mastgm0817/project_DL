@@ -96,10 +96,8 @@ def explain_tab():
     op_chart=st.selectbox("데이터 정보", option)
 
     # 파이 차트 표시
-    if op_chart=="장르 비율 파이 차트":
-        labels = ['action', 'adventure', 'animmation', 'comedy', 'crime', 'drama', 'fantasy', 'horror', 'mystery', 'romance', 'sci-fi', 'short', 'thriler']
-        values = [424, 238, 242, 667, 292, 829, 166, 354, 195, 342, 162, 201, 431]
-        pie_chart(labels, values, title_text='Movie genre')
+    if op_chart=="장르 비율 파이 차트":     whataLIN/7kpieGraph.pickle
+        draw_chart('whataLIN/7kpieGraph.pickle')
 
     # 산점도 표시
     elif op_chart=="장르 클러스터 산점도": 
