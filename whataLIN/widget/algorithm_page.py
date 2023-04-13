@@ -13,7 +13,7 @@ def build():
     with tab0: model_tab() # 팀 소개
     with tab1: pred_tab() # 데이터 설명
     st.subheader("딥러닝 페이지입니다.")
-    show_pred()
+
 
 def model_tab():
     pass
