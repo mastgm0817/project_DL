@@ -1,6 +1,7 @@
 import streamlit as st
 import torch
 import requests
+from PIL import Image
 
 def build():
     '''딥러닝 결과 출력 페이지 정의 및 구현'''
