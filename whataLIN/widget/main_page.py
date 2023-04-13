@@ -15,9 +15,9 @@ def get_table():
 def draw_chart(root):
     with open(root, 'rb') as file:
         fig = pickle.load(file)
-    
     if root!='whataLIN/clus_pie_1.pickle':
         fig.update_layout(width=700, height=450)
+        
     st.plotly_chart(fig)
 
     

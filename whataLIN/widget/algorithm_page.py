@@ -22,11 +22,8 @@ def get_image():
 
     try: 
         if uploaded_file is not None:
-            poster = Image.open(uploaded_file)
-            st.poster(poster, caption='업로드된 이미지', use_column_width=True)
-            # img_size = image.size
-            # st.write(f'이미지 크기: {img_size[0]}x{img_size[1]}')
-            return poster
+            image = Image.open(uploaded_file)
+            st.image(image, caption='업로드된 이미지', use_column_width=True)
         else: st.write("이미지가 여기에 표시됩니다.")
     
     except:
