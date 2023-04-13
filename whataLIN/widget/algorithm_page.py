@@ -128,7 +128,7 @@ def pred_tab():
                 model = torch.load('whataLIN/Resnet50_final.pth')
                 predict(image)
     except Exception as e:
-        st.write(" ")
+        st.write("구현 아직 못했은ㅎ")
     
     
 
